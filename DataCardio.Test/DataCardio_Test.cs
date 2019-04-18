@@ -42,7 +42,7 @@ namespace DataCardio.Test
 
         //script 3
         [DataTestMethod]
-        [DataRow("M", 80, 75, 40, 60, 263.40)]  //sesso, frequenza cardiaca media, peso, anni, durata sessione allenamento
+        [DataRow("M", 80, 75, 40, 60, 263.40)]  //sesso, frequenza cardiaca media, peso, anni, durata sessione allenamento, calorie bruciate aspettate
         [DataRow("F", 60, 65, 30, 60, 6.59)]
 
         public void TestCalorieBruciate(string sesso, double frequenza_cardiaca, double peso, int anni, double tempo, double calorie_bruciate_aspettate)
