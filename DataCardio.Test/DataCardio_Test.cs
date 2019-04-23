@@ -63,5 +63,28 @@ namespace DataCardio.Test
 
             Assert.AreEqual(spesa_energetica_aspettata, spesa_energetica);
         }
+
+        //script 5
+        [DataTestMethod]
+        [DataRow(60, 110, 100, 90)]  //battiti a riposo, battiti massimi, battiti di recupero, media giornaliera
+        [DataRow(55, 120, 90, 88.3)]
+
+        public void TestBattitiGiornalieri(double battiti_riposo, double battiti_massimi, double battiti_recupero, double battiti_giornalieri_aspettati)
+        {
+            double battiti_giornalieri = CardioLibrary.DataCardio.BattitiGiornalieri(battiti_riposo, battiti_massimi, battiti_recupero);
+
+            Assert.AreEqual(battiti_giornalieri_aspettati, battiti_giornalieri);
+        }
+
+        [DataTestMethod]
+        [DataRow(58, 56, 60, 56, 57, 57.4)]  //battiti giorno 1, giorno 2, giorno 3, giorno 4, giorno 5, battiti a riposo
+        [DataRow(56, 60, 55, 58, 50, 55.8)]
+
+        public void TestBattitiRiposo(double battiti_1, double battiti_2, double battiti_3, double battiti_4, double battiti_5, double battiti_riposo_aspettati)
+        {
+            double battiti_riposo = CardioLibrary.DataCardio.BattitiRiposo(battiti_1, battiti_2, battiti_3, battiti_4, battiti_5);
+
+            Assert.AreEqual(battiti_riposo_aspettati, battiti_riposo);
+        }
     }
 }

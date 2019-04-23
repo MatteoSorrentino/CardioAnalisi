@@ -112,5 +112,28 @@ namespace CardioLibrary
 
             return risultato;
         }
+
+        //script 5
+        public static double BattitiGiornalieri(double battiti_riposo, double battiti_massimi, double battiti_recupero)
+        {
+            double battiti_giornalieri = 0;
+
+            battiti_giornalieri = (battiti_riposo + battiti_massimi + battiti_recupero) / 3;
+
+            battiti_giornalieri = Math.Round(battiti_giornalieri, 1);
+
+            return battiti_giornalieri;
+        }
+
+        public static double BattitiRiposo(double battiti_1, double battiti_2, double battiti_3, double battiti_4, double battiti_5)
+        {
+            double battiti_riposo = 0;
+
+            battiti_riposo = (battiti_1 + battiti_2 + battiti_3 + battiti_4 + battiti_5) / 5;
+
+            battiti_riposo = Math.Round(battiti_riposo, 1);
+
+            return battiti_riposo;
+        }
     }
 }
