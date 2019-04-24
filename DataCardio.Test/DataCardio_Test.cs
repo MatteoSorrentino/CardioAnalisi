@@ -77,14 +77,25 @@ namespace DataCardio.Test
         }
 
         [DataTestMethod]
-        [DataRow(58, 56, 60, 56, 57, 57.4)]  //battiti giorno 1, giorno 2, giorno 3, giorno 4, giorno 5, battiti a riposo
-        [DataRow(56, 60, 55, 58, 50, 55.8)]
+        [DataRow(58, 56, 60, 56, 57, 56)]  //battiti giorno 1, giorno 2, giorno 3, giorno 4, giorno 5, battiti a riposo
+        [DataRow(56, 60, 55, 58, 50, 50)]
 
         public void TestBattitiRiposo(double battiti_1, double battiti_2, double battiti_3, double battiti_4, double battiti_5, double battiti_riposo_aspettati)
         {
             double battiti_riposo = CardioLibrary.DataCardio.BattitiRiposo(battiti_1, battiti_2, battiti_3, battiti_4, battiti_5);
 
             Assert.AreEqual(battiti_riposo_aspettati, battiti_riposo);
+        }
+
+        [DataTestMethod]
+        [DataRow(56, 58, 60, 50, 55, 10)]  //battiti giorno 1, giorno 2, giorno 3, giorno 4, giorno 5, variabilità del battito
+        [DataRow(57, 55, 56, 59, 58, 4)]
+
+        public void TestVariabilitàBattito(double battiti_1, double battiti_2, double battiti_3, double battiti_4, double battiti_5, double variabilità_battito_aspettato)
+        {
+            double variabilità_battito = CardioLibrary.DataCardio.VariabilitàBattito(battiti_1, battiti_2, battiti_3, battiti_4, battiti_5);
+
+            Assert.AreEqual(variabilità_battito_aspettato, variabilità_battito);
         }
     }
 }

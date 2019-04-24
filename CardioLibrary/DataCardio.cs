@@ -128,12 +128,55 @@ namespace CardioLibrary
         public static double BattitiRiposo(double battiti_1, double battiti_2, double battiti_3, double battiti_4, double battiti_5)
         {
             double battiti_riposo = 0;
+            double[] battiti = { battiti_1, battiti_2, battiti_3, battiti_4, battiti_5 };
+            double min = 0;
 
-            battiti_riposo = (battiti_1 + battiti_2 + battiti_3 + battiti_4 + battiti_5) / 5;
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == 0)
+                {
+                    min = battiti[i];
+                }
 
-            battiti_riposo = Math.Round(battiti_riposo, 1);
+                if (battiti[i] < min)
+                {
+                    min = battiti[i];
+                }
+            }
+
+            battiti_riposo = min;
 
             return battiti_riposo;
+        }
+
+        public static double VariabilitàBattito(double battiti_1, double battiti_2, double battiti_3, double battiti_4, double battiti_5)
+        {
+            double variazione = 0;
+            double[] battiti = { battiti_1, battiti_2, battiti_3, battiti_4, battiti_5 };
+            double max = 0, min = 0;
+
+            for(int i=0; i<5; i++)
+            {
+                if (i == 0)
+                {
+                    max = battiti[i];
+                    min = battiti[i];
+                }
+
+                if (battiti[i] < min)
+                {
+                    min = battiti[i];
+                }
+
+                if (battiti[i] > max)
+                {
+                    max = battiti[i];
+                }
+            }
+
+            variazione = max - min;
+
+            return variazione;
         }
     }
 }
