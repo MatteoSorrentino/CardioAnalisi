@@ -155,7 +155,7 @@ namespace CardioLibrary
             double[] battiti = { battiti_1, battiti_2, battiti_3, battiti_4, battiti_5 };
             double max = 0, min = 0;
 
-            for(int i=0; i<5; i++)
+            for(int i = 0; i < 5; i++)
             {
                 if (i == 0)
                 {
@@ -177,6 +177,33 @@ namespace CardioLibrary
             variazione = max - min;
 
             return variazione;
+        }
+
+        public static string OrdineBattiti(double battiti_mattutini, double battiti_pomeridiani, double battiti_attività, double battiti_serali)
+        {
+            string battiti_ordinati = "";
+
+            string risultato = "";
+
+            double[] battiti = { battiti_mattutini, battiti_pomeridiani, battiti_attività, battiti_serali };
+
+            Array.Sort(battiti);
+
+            for(int i = 0; i < 4; i++)
+            {
+                if (i != 3)
+                {
+                    battiti_ordinati = Convert.ToString(battiti[i] + ", ");
+                }
+                else
+                {
+                    battiti_ordinati = Convert.ToString(battiti[i]);
+                }
+
+                risultato = risultato + battiti_ordinati;
+            }
+
+            return risultato;
         }
     }
 }
