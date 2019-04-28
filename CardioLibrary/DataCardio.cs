@@ -205,5 +205,37 @@ namespace CardioLibrary
 
             return risultato;
         }
+
+        //extra
+        public static string CalcoloIMC(double altezza, double peso)
+        {
+            string categoria_imc = "";
+            double risultato_imc = 0;
+
+            risultato_imc = peso / (altezza * altezza);
+            risultato_imc = Math.Round(risultato_imc, 1);
+
+            if (risultato_imc < 19)
+            {
+                categoria_imc = "Sottopeso";
+            }
+
+            if (risultato_imc >= 19 && risultato_imc <= 24)
+            {
+                categoria_imc = "Medio";
+            }
+
+            if (risultato_imc >= 25 && risultato_imc <= 30)
+            {
+                categoria_imc = "Sovrappeso";
+            }
+
+            if (risultato_imc > 30)
+            {
+                categoria_imc = "Obesità";
+            }
+
+            return categoria_imc;
+        }
     }
 }

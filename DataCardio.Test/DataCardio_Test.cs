@@ -111,5 +111,19 @@ namespace DataCardio.Test
 
             Assert.AreEqual(battiti_ordinati_aspettati, battiti_ordinati);
         }
+
+        //extra
+        [DataTestMethod]
+        [DataRow(1.80, 75, "Medio")]  //altezza individuo, peso individuo, categoria IMC, risultato IMC (23.1)
+        [DataRow(1.75, 80, "Sovrappeso")]  //(26.1)
+        [DataRow(1.70, 50, "Sottopeso")]  //(17.3)
+        [DataRow(1.60, 80, "Obesità")]  //(31.2)
+
+        public void TestCalcoloIMC(double altezza, double peso, string categoria_imc_aspettata)
+        {
+            string categoria_imc = CardioLibrary.DataCardio.CalcoloIMC(altezza, peso);
+
+            Assert.AreEqual(categoria_imc_aspettata, categoria_imc);
+        }
     }
 }
